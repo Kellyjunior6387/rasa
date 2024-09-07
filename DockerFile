@@ -1,0 +1,18 @@
+# Use the official Rasa image
+FROM rasa/rasa:latest
+
+# Set the working directory
+WORKDIR /app
+
+# Copy your project files to the container
+COPY . /app
+
+# Install additional Python dependencies (if any)
+# RUN pip install -r requirements.txt
+
+# Expose port 5005 (Rasa's default port)
+EXPOSE 5005
+
+# Start the Rasa server
+CMD ["run", "-m", "models", "--enable-api", "--cors", "*"]
+
